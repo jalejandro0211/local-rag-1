@@ -27,7 +27,7 @@ def load_and_split_data(file_path):
     # Load the PDF file and split the data into chunks
     loader = UnstructuredPDFLoader(file_path=file_path)
     data = loader.load()
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=7500, chunk_overlap=100)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=7500, chunk_overlap=100,separators=["--next--"])
     chunks = text_splitter.split_documents(data)
 
     return chunks
